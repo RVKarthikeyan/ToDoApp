@@ -1,21 +1,22 @@
 from elasticsearch import Elasticsearch
+import os
+
 es = Elasticsearch(
-    "https://localhost:9200",
-    basic_auth=("elastic", "6XeRw_=V_MX2HffN6gCf"),
-    verify_certs=False  # Turn off SSL verification for local dev only
+    os.getenv("ELASTIC_URL"),  # Example: "https://my-elasticsearch-project-e77d20.es.ap-southeast-1.aws.elastic.cloud:443"
+    api_key=os.getenv("ELASTIC_API_KEY")
 )
 
 def index_task(task_id: int, title: str, desc: str):
-    es.index(index="tasks", id=task_id, body={
+    es.index(index="todo-search-intern", id=task_id, body={
         "title": title,
         "description": desc
     })
 
 def delete_task(task_id: int):
-    es.delete(index="tasks", id=task_id, ignore=[404])
+    es.delete(index="todo-search-intern", id=task_id, ignore=[404])
 
 def search_tasks(query: str):
-    res = es.search(index="tasks", body={
+    res = es.search(index="todo-search-intern", body={
         "query": {
             "multi_match": {
                 "query": query,
