@@ -8,3 +8,4 @@ celery[redis]
 elasticsearch
 openai
 httpx
+cohere
