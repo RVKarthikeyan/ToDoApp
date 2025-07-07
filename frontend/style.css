@@ -1,0 +1,220 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
+:root {
+  --white: hsl(0, 0%, 100%);
+  --bright-blue: hsl(220, 98%, 61%);
+  --bright-green: hsl(192, 100%, 67%);
+  --purple-pink: hsl(280, 87%, 65%);
+
+  --body-bg: hsl(235, 21%, 11%);
+  --card-bg: hsl(235, 24%, 19%);
+  --text-color: #c8cae1;
+  --placeholder-color: hsl(233, 14%, 35%);
+  --box-shadow: hsl(0, 0%, 0%, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 18px;
+  font-family: "Josefin Sans", sans-serif;
+  min-height: 100vh;
+  margin: auto;
+  padding-top: 5rem;
+  width: min(85%, 30rem);
+  background-color: var(--body-bg);
+  color: var(--text-color);
+}
+
+/* 🔱 Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  color: var(--white);
+  letter-spacing: 1.3rem;
+  font-weight: 700;
+  font-size: 36px;
+}
+
+/* 🧾 Card */
+.card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background-color: var(--card-bg);
+  border-top: 1px solid var(--placeholder-color);
+  border-radius: 0.3rem;
+}
+
+/* 📝 Input */
+.add input {
+  flex: 1;
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--placeholder-color);
+  background: #f2f2f2;
+  color: #111;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.add input::placeholder {
+  color: #999;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+/* 📃 Todo List */
+ul {
+  list-style: none;
+}
+
+.todo-item {
+  justify-content: space-between;
+}
+
+.todo,
+.icons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.todo p {
+  margin-left: 0.5rem;
+}
+
+/* ❌ Delete Icon */
+.fa {
+  cursor: pointer;
+  color: var(--placeholder-color);
+}
+
+.fa:hover {
+  color: var(--bright-blue);
+}
+
+/* ✅ Checkbox */
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] ~ label {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid var(--placeholder-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked ~ label {
+  background: url(./images/icon-check.svg),
+    linear-gradient(135deg, var(--bright-green) 0, var(--purple-pink));
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+input[type="checkbox"]:checked ~ p {
+  text-decoration: line-through;
+  color: var(--placeholder-color);
+}
+
+/* 📊 Footer Stats + Filter Row */
+.stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
+  height: 3rem;
+  color: var(--placeholder-color);
+  border-radius: 0 0 0.3rem 0.3rem;
+  padding: 0 1rem;
+  align-items: center;
+  background-color: var(--card-bg);
+}
+
+.stats .filter {
+  display: flex;
+  gap: 1rem;
+}
+
+.stats .filter button,
+#clear {
+  background: none;
+  border: none;
+  color: var(--placeholder-color);
+  cursor: pointer;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.stats .filter button:hover,
+#clear:hover {
+  color: var(--text-color);
+}
+
+.stats .filter button.active {
+  color: var(--bright-blue);
+  font-weight: 700;
+}
+
+/* 🔚 Footer */
+footer {
+  margin: 3rem 0;
+  text-align: center;
+  color: var(--placeholder-color);
+  font-size: 14px;
+}
+/* Send Button Inside Input */
+.add {
+  position: relative;
+}
+
+#send-btn {
+  position: absolute;
+  right: 2.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--bright-blue);
+  cursor: pointer;
+}
+
+/* Spinner loader */
+.spinner {
+  position: absolute;
+  right: 3.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 3px solid #999;
+  border-top: 3px solid var(--bright-blue);
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  animation: spin 0.7s linear infinite;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes spin {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) rotate(360deg); }
+}

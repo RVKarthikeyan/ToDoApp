@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TODO</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <h1>TODO</h1>
+    </header>
+
+  <main>
+    <div class="card add">
+      <input
+        type="text"
+        id="task-input"
+        placeholder="e.g. Remind me to call mom and go to gym"
+        spellcheck="false"
+        autocomplete="off"
+      />
+      <button id="send-btn"><i class="fa fa-arrow-up"></i></button>
+      <div id="loading" class="spinner hidden"></div>
+    </div>
+
+    <ul class="todos" id="task-list"></ul>
+
+    <div class="card stats">
+      <p><span id="items-left">0</span> items left</p>
+      <div class="filter">
+        <button id="all" class="active">All</button>
+        <button id="active">Active</button>
+        <button id="completed">Completed</button>
+      </div>
+      <div class="corner">
+        <button id="clear">Clear Completed</button>
+      </div>
+    </div>
+  </main>
+
+    
+
+  <script src="script.js"></script>
+</body>
+</html>
