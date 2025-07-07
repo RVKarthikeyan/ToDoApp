@@ -1,4 +1,4 @@
-const BACKEND = "http://127.0.0.1:8000";
+const BACKEND = "https://todoapp-j13l.onrender.com";
 const listEl = document.getElementById("task-list");
 const inputEl = document.getElementById("task-input");
 const addBtn = document.getElementById("add-btn") || null;

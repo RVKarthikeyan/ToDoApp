@@ -9,11 +9,7 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 # ✅ Allow frontend to connect
-origins = [
-    "http://127.0.0.1:8080",
-    "http://localhost:8080",
-    "http://0.0.0.0:8080"
-]
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
