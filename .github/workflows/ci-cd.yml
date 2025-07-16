@@ -1,0 +1,25 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to Oracle Container Registry
+        run: echo "${{ secrets.OCI_REGISTRY_PASSWORD }}" | docker login hyd.ocir.io -u 'karthikeyanrv04/karthikeyanrv04' --password-stdin
+
+      - name: Build Docker image
+        run: docker build -t hyd.ocir.io/karthikeyanrv04/todo-backend:v1 ./backend
+
+      - name: Push Docker image to OCI
+        run: docker push hyd.ocir.io/karthikeyanrv04/todo-backend:v1
