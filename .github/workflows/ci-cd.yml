@@ -16,7 +16,7 @@ jobs:
         uses: docker/setup-buildx-action@v2
 
       - name: Login to Oracle Container Registry
-        run: echo "${{ secrets.OCI_REGISTRY_PASSWORD }}" | docker login hyd.ocir.io -u 'karthikeyanrv04/karthikeyanrv04' --password-stdin
+        run: echo "${{ secrets.OCI_REGISTRY_PASSWORD }}" | docker login hyd.ocir.io -u 'ax7btvbavawd/karthikeyanrv04' --password-stdin
 
       - name: Build Docker image
         run: docker build -t hyd.ocir.io/karthikeyanrv04/todo-backend:v1 ./backend
