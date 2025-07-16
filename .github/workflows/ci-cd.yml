@@ -23,7 +23,7 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build -t ${{ secrets.OCIR_REGION }}/${{ secrets.OCIR_NAMESPACE }}/${{ secrets.IMAGE_NAME }}:latest .
+        docker build -t ${{ secrets.OCIR_REGION }}/${{ secrets.OCIR_NAMESPACE }}/${{ secrets.IMAGE_NAME }}:latest ./backend
 
     - name: Push Docker Image
       run: |
